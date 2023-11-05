@@ -50,8 +50,21 @@ greeting('2100')             | Good evening!          | 14
 
 #region bailam
 def greeting(hour_str):
-  
-  return 'todo'
+  try:
+    hour = int(hour_str[:2])
+    if 'pm' in hour_str.lower():
+        hour += 12
+  except ValueError:
+    hour = int(hour_str[:1])
+    if 'pm' in hour_str.lower():
+        hour += 12
+      
+  if 0 <= hour < 12:
+    return "Good morning!"
+  elif 12 <= hour < 18:
+    return "Good afternoon!"
+  else:
+    return "Good evening!"
   
 
 if __name__=='__main__':
